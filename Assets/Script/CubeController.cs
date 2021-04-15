@@ -14,6 +14,7 @@ public class CubeController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,19 +28,12 @@ public class CubeController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.tag == "GroundTag")
+        if (collision.collider.tag == "GroundTag"|| collision.collider.tag == "BlockTag")
         {
-            this.GetComponent<AudioSource>().volume = 0.3f;
+            audioSource.PlayOneShot(Block);
             Debug.Log("音");
-        }
-
-        else
-        {
-            this.GetComponent<AudioSource>().volume = 0;
-            Debug.Log("無");
-
         }
     }
 }
