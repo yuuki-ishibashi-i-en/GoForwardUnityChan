@@ -33,7 +33,6 @@ public class CubeController : MonoBehaviour
         if (collision.collider.tag == "GroundTag"|| collision.collider.tag == "BlockTag")
         {
             audioSource.PlayOneShot(Block);
-            Debug.Log("音");
         }
     }
 }

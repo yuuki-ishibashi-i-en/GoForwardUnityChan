@@ -12,7 +12,7 @@ public class UIController : MonoBehaviour
 
     private float len = 0;
 
-    private float speed = 0.03f;
+    private float speed = 5f;
 
     private bool isGameOver = false;
 
@@ -28,23 +28,15 @@ public class UIController : MonoBehaviour
     {
         if (this.isGameOver == false)
         {
-            this.len += this.speed;
+            this.len += this.speed * Time.deltaTime;
 
             this.runLengthText.GetComponent<Text>().text = "Distance:  " + len.ToString("F2") + "m";
-        }
-
-        if (this.isGameOver == true)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                SceneManager.LoadScene("SampleScene");
-            }
         }
     }
 
     public void GameOver()
     {
-        this.gameOverText.GetComponent<Text>().text = "Game Over";
+        this.gameOverText.GetComponent<Text>().text = "GameOver";
         this.isGameOver = true;
     }
 }
